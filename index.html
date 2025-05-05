@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Xếp Hình</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <button id="startBtn">Bắt đầu</button>
+    <div id="winMessage" style="color: red;font-weight: bold; margin-bottom: 20px; margin-top: 0px;"></div>
+
+    <div class="game-area">
+      <div class="board" id="board"></div>
+
+      <div class="side-panel">
+        <div class="timer-box">
+          <h3>Đồng Hồ</h3>
+          <div id="timer">00:00</div>
+        </div>
+
+        <div class="controls">
+            <p>Hướng Dẫn Di Chuyển</p>
+            <div class="keys">
+              <div class="key">↑</div>
+              <div class="key">←</div>
+              <div class="key">↓</div>
+              <div class="key">→</div>
+              <div class="key">W</div>
+              <div class="key">A</div>
+              <div class="key">S</div>
+              <div class="key">D</div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <h4 style="margin-top: 50px;background-color: rgb(240, 241, 236);padding: 10px; ">Lịch Sử Lượt Chơi</h4>
+    <table class="history">
+      <thead>
+        <tr>
+          <th style="background-color: rgb(227, 234, 244);">STT</th>
+          <th style="background-color: rgb(227, 234, 244);">Bước đi</th>
+          <th style="background-color: rgb(227, 234, 244);">Thời gian</th>
+        </tr>
+      </thead>
+      <tbody id="historyBody"></tbody>
+    </table>
+  </div>
+<!-- <script>
+    let isPlaying = false;
+const startBtn = document.getElementById('startBtn');
+
+startBtn.addEventListener('click', () => {
+    if (!isPlaying) {
+        // Bắt đầu trò chơi
+        startGame(); // Gọi hàm startGame() để khởi tạo và bắt đầu trò chơi
+        startBtn.textContent = 'Kết thúc'; // Đổi văn bản nút thành 'Kết thúc'
+        startBtn.classList.add('end-btn'); // Thêm class 'end-btn' để thay đổi màu sắc
+        isPlaying = true;
+    } else {
+        // Kết thúc trò chơi
+        stopGame(); // Gọi hàm stopGame() để kết thúc trò chơi
+        startBtn.textContent = 'Bắt đầu'; // Đổi văn bản nút thành 'Bắt đầu'
+        startBtn.classList.remove('end-btn'); // Xóa class 'end-btn' để trả lại màu sắc ban đầu
+        isPlaying = false;
+    }
+});
+
+function startGame() {
+    initializeTiles(); // Khởi tạo các ô
+    shuffleTiles(tileValues); // Trộn các ô
+    renderGameBoard(); // Hiển thị bàn chơi
+    startTimer(); // Bắt đầu đồng hồ
+}
+
+function stopGame() {
+    clearInterval(timerInterval); // Dừng đồng hồ
+    timerDisplay.textContent = '00:00'; // Reset đồng hồ về 00:00
+}
+
+</script> -->
+  <script src="script.js"></script>
+</body>
+</html>
