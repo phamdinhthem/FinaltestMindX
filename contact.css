@@ -1,0 +1,166 @@
+.container {
+
+    width: 100%;
+    /* chiếm toàn bộ chiều rộng có thể */
+    margin: 0 auto;
+    /* căn giữa */
+    padding: 0 30px;
+    /* có lề để nội dung không dính sát cạnh */
+    box-sizing: border-box;
+  }
+  .container .header {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* hover active */
+  .menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 8px 12px;
+    transition: color 0.3s, border-bottom 0.3s;
+    position: relative;
+  }
+  
+  .menu a:hover {
+    color: #e60023;
+  }
+  
+  .menu a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: #e60023;
+    transition: width 0.3s;
+  }
+  
+  .menu a:hover::after {
+    width: 100%;
+  }
+  
+  /* Nếu muốn đánh dấu menu đang active */
+  .menu a.active {
+    color: #e60023;
+    font-weight: bold;
+  }
+  
+  
+  
+  .container .header .logo {
+    font-family: Exo;
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
+  .container .header .menu {
+    display: flex;
+    gap: 150px;
+  
+  }
+  
+  .container .header .menu a {
+    text-decoration: none;
+    /* color: inherit; */
+    font-size: 16px;
+    font-size: Poppins;
+  }
+  
+  .container .header .lastheader .search-input {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background-color: #F5F5F5;
+    border-radius: 6px;
+    border: 0;
+  }
+  
+  .container .header .lastheader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .breadcrumb {
+    margin: 30px 0 10px;
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+  
+  .contact-info, .contact-form {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .contact-box {
+    margin-bottom: 20px;
+  }
+  
+  .contact-box .icon {
+    font-size: 24px;
+    color: #d32f2f;
+    margin-bottom: 10px;
+  }
+  
+  .contact-box h4 {
+    margin-bottom: 8px;
+    color: #000;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .contact-form textarea {
+    height: 150px;
+    resize: none;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  .contact-form button {
+    background-color: #d32f2f;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  

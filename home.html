@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinalTest</title>
+    <link rel="stylesheet" href="final.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+          
+            <div class="logo">
+                <P>THEM</P>
+            </div>
+            <div class="menu">
+                <a href="home.html" >
+                    <span>Home</span>
+                </a>
+                <a href="contact.html" >
+                    <span>Contact</span>
+                </a>
+                <a href="" >
+                    <span>About</span>
+                </a>
+                <button id="logoutBtn">Logout</button>
+                
+            </div>
+            <div class="lastheader">
+                <div class="search-input">
+                    <input type="text" class="search-input" placeholder="What are you looking for?">
+                    <img src="./asset/Component 2.svg" alt="">
+                </div>
+                <!-- <div class="love"><img src="asset/Wishlist.svg" alt=""></div> -->
+                <div class="cart">
+                    <a class="cart-icon">
+                        <img src="./asset/Cart1 with buy.svg" alt="">
+                    </a>
+                    <span class="totalQuantity">0</span>
+                </div>
+                <div class="cart-dropdown" id="cartDropdown">
+                  <h3>Your Cart</h3>
+                  <ul id="cart-items"></ul>
+                  <p>Total: $<span id="total">0.00</span></p>
+                  <button class="view-cart-button" onclick="window.location.href='cart.html'">Xem giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="main-header">
+              <div class="sidebar">
+                <li><a href="#" data-category="all"><strong>All Products</strong></a></li>
+                <li><a href="#" data-category="woman">Woman’s Fashion</a></li>
+                <!-- <li><a href="#" data-category="men">Men’s Fashion</a></li> -->
+                <li class="menu-item" data-category="toys">Toys<i class="fas fa-chevron-right"></i></li>
+                <li class="menu-item" data-category="men">Men’s Fashion <i class="fas fa-chevron-right"></i></li>
+                <li class="menu-item" data-category="electronics">Electronics</li>
+            </div>
+             <div class="image-baner">
+              <img src="./asset/Mask group.svg" alt="">
+             </div>
+            </div>
+            
+            </div>
+          <!-- <div class="product-grid"> -->
+            <section class="product-header">
+              <div class="title-group">
+                <!-- <span class="subtitle">Our Products</span> -->
+                <h2 class="main-title">Products</h2>
+              </div>
+            </section>
+            <div class="product-grid">   
+              <div class="product-card" onclick="viewProduct('p1', 'CANON EOS DSLR Camera', 100, 'https://s3-alpha-sig.figma.com/img/e608/92a4/f0a3d5d144dce622c7338ec5be12908f?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=TlVb-fvwB~q2mM9nYZMZB73au600Z5fsTqPFxTlbI2ln4mMKKz~Ye67N7-5KbMGzY2GgGUsEXa2Fc96c~chG7LkEuxgk0SJY9FmigpxfLAPKszP71MD0yF-RJ8pBR1ICgVtoMqDVOTU0hnbGGXGARiSA9zloJK53f6odg1xsso~6d9gScipmkX7Ve5QyvfGPHipgWEAa~BHRgfqZGMp~XJ5yc-493P2~a~Nl9Jqz32KMktFBdNHjMpT3UxSXNfS3v6PHogJ2YvLu-xiMBMfBwZNudR6Y53ptqwqQh0dNorq0pYQCuPzrLqubusqyRXCslXywITsCuCxyy~dnaBHDFg')">
+                <span class="badge-new">NEW</span>
+                <img src="https://s3-alpha-sig.figma.com/img/e608/92a4/f0a3d5d144dce622c7338ec5be12908f?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=TlVb-fvwB~q2mM9nYZMZB73au600Z5fsTqPFxTlbI2ln4mMKKz~Ye67N7-5KbMGzY2GgGUsEXa2Fc96c~chG7LkEuxgk0SJY9FmigpxfLAPKszP71MD0yF-RJ8pBR1ICgVtoMqDVOTU0hnbGGXGARiSA9zloJK53f6odg1xsso~6d9gScipmkX7Ve5QyvfGPHipgWEAa~BHRgfqZGMp~XJ5yc-493P2~a~Nl9Jqz32KMktFBdNHjMpT3UxSXNfS3v6PHogJ2YvLu-xiMBMfBwZNudR6Y53ptqwqQh0dNorq0pYQCuPzrLqubusqyRXCslXywITsCuCxyy~dnaBHDFg__" alt="Product">
+                <div class="product-title">Máy ảnh CANON EOS 250D</div>
+                <div class="product-price">$100</div>
+                <div class="product-rating">★★★★☆ (35)</div>
+                <button class="add-to-cart" 
+                onclick="event.stopPropagation(); addToCart('p1', 'Máy ảnh CANON EOS 250D', 100, 'https://s3-alpha-sig.figma.com/img/e608/92a4/f0a3d5d144dce622c7338ec5be12908f?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=TlVb-fvwB~q2mM9nYZMZB73au600Z5fsTqPFxTlbI2ln4mMKKz~Ye67N7-5KbMGzY2GgGUsEXa2Fc96c~chG7LkEuxgk0SJY9FmigpxfLAPKszP71MD0yF-RJ8pBR1ICgVtoMqDVOTU0hnbGGXGARiSA9zloJK53f6odg1xsso~6d9gScipmkX7Ve5QyvfGPHipgWEAa~BHRgfqZGMp~XJ5yc-493P2~a~Nl9Jqz32KMktFBdNHjMpT3UxSXNfS3v6PHogJ2YvLu-xiMBMfBwZNudR6Y53ptqwqQh0dNorq0pYQCuPzrLqubusqyRXCslXywITsCuCxyy~dnaBHDFg__')">
+                Add To Cart
+                </button>
+              </div>
+
+              <div class="product-card" onclick="viewProduct('p2', 'Kids Electric Car', 960, 'https://s3-alpha-sig.figma.com/img/203b/e522/b7b02d10672f6f6147762cf52bfcfc54?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=UdkLzQurUmJApWVIvyTrpu~EHhOjvVPD-5GIJaapRWVELGMDubortx~cmyl8IPJEk0faxQro-UPgnFkYtZNRa3izWujtzBLAHMwSTYBtoF5HfZPhWRS8wIP0S4~NsolBkWworfq~W1rTetZpOpVxh8mMKi-DSjmvwoNgLmt-3457IWDKKmZiZnBXXv79Ji-xKecec1ozWUvreSMyhv1wx7pBdsMYQrSFq5SsRcHaaAT46~s3uK891~~g5CdiZIGOxFWkV-WrvGVy0cpGwEsUwY5xDQSF~mQTjBCS-wF7qXr9c1ksPGMYlQwStzsBpxZPxmIUo930szFiGhZB~dfMLA')">
+                <span class="badge-new">NEW</span>
+                <img src="https://s3-alpha-sig.figma.com/img/203b/e522/b7b02d10672f6f6147762cf52bfcfc54?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=UdkLzQurUmJApWVIvyTrpu~EHhOjvVPD-5GIJaapRWVELGMDubortx~cmyl8IPJEk0faxQro-UPgnFkYtZNRa3izWujtzBLAHMwSTYBtoF5HfZPhWRS8wIP0S4~NsolBkWworfq~W1rTetZpOpVxh8mMKi-DSjmvwoNgLmt-3457IWDKKmZiZnBXXv79Ji-xKecec1ozWUvreSMyhv1wx7pBdsMYQrSFq5SsRcHaaAT46~s3uK891~~g5CdiZIGOxFWkV-WrvGVy0cpGwEsUwY5xDQSF~mQTjBCS-wF7qXr9c1ksPGMYlQwStzsBpxZPxmIUo930szFiGhZB~dfMLA__" alt="Product">
+                <div class="product-title">Laptop Kids Electric</div>
+                <div class="product-price">$300</div>
+                <div class="product-rating">★★★★☆ (65)</div>
+                <button class="add-to-cart" 
+                onclick="event.stopPropagation(); addToCart('p2', 'Kids Electric Car', 960, 'https://s3-alpha-sig.figma.com/img/203b/e522/b7b02d10672f6f6147762cf52bfcfc54?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=UdkLzQurUmJApWVIvyTrpu~EHhOjvVPD-5GIJaapRWVELGMDubortx~cmyl8IPJEk0faxQro-UPgnFkYtZNRa3izWujtzBLAHMwSTYBtoF5HfZPhWRS8wIP0S4~NsolBkWworfq~W1rTetZpOpVxh8mMKi-DSjmvwoNgLmt-3457IWDKKmZiZnBXXv79Ji-xKecec1ozWUvreSMyhv1wx7pBdsMYQrSFq5SsRcHaaAT46~s3uK891~~g5CdiZIGOxFWkV-WrvGVy0cpGwEsUwY5xDQSF~mQTjBCS-wF7qXr9c1ksPGMYlQwStzsBpxZPxmIUo930szFiGhZB~dfMLA')">
+                Add To Cart
+                </button>
+              </div>
+
+
+
+              <div class="product-card" onclick="viewProduct('p1', 'CANON EOS DSLR Camera', 100, 'https://s3-alpha-sig.figma.com/img/e608/92a4/f0a3d5d144dce622c7338ec5be12908f?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=TlVb-fvwB~q2mM9nYZMZB73au600Z5fsTqPFxTlbI2ln4mMKKz~Ye67N7-5KbMGzY2GgGUsEXa2Fc96c~chG7LkEuxgk0SJY9FmigpxfLAPKszP71MD0yF-RJ8pBR1ICgVtoMqDVOTU0hnbGGXGARiSA9zloJK53f6odg1xsso~6d9gScipmkX7Ve5QyvfGPHipgWEAa~BHRgfqZGMp~XJ5yc-493P2~a~Nl9Jqz32KMktFBdNHjMpT3UxSXNfS3v6PHogJ2YvLu-xiMBMfBwZNudR6Y53ptqwqQh0dNorq0pYQCuPzrLqubusqyRXCslXywITsCuCxyy~dnaBHDFg')">
+                <span class="badge-new">NEW</span>
+                <img src="https://s3-alpha-sig.figma.com/img/e608/92a4/f0a3d5d144dce622c7338ec5be12908f?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=TlVb-fvwB~q2mM9nYZMZB73au600Z5fsTqPFxTlbI2ln4mMKKz~Ye67N7-5KbMGzY2GgGUsEXa2Fc96c~chG7LkEuxgk0SJY9FmigpxfLAPKszP71MD0yF-RJ8pBR1ICgVtoMqDVOTU0hnbGGXGARiSA9zloJK53f6odg1xsso~6d9gScipmkX7Ve5QyvfGPHipgWEAa~BHRgfqZGMp~XJ5yc-493P2~a~Nl9Jqz32KMktFBdNHjMpT3UxSXNfS3v6PHogJ2YvLu-xiMBMfBwZNudR6Y53ptqwqQh0dNorq0pYQCuPzrLqubusqyRXCslXywITsCuCxyy~dnaBHDFg__" alt="Product">
+                <div class="product-title">Máy ảnh CANON EOS 250D</div>
+                <div class="product-price">$100</div>
+                <div class="product-rating">★★★★☆ (35)</div>
+                <button class="add-to-cart" 
+                onclick="event.stopPropagation(); addToCart('p1', 'Máy ảnh CANON EOS 250D', 100, 'https://s3-alpha-sig.figma.com/img/e608/92a4/f0a3d5d144dce622c7338ec5be12908f?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=TlVb-fvwB~q2mM9nYZMZB73au600Z5fsTqPFxTlbI2ln4mMKKz~Ye67N7-5KbMGzY2GgGUsEXa2Fc96c~chG7LkEuxgk0SJY9FmigpxfLAPKszP71MD0yF-RJ8pBR1ICgVtoMqDVOTU0hnbGGXGARiSA9zloJK53f6odg1xsso~6d9gScipmkX7Ve5QyvfGPHipgWEAa~BHRgfqZGMp~XJ5yc-493P2~a~Nl9Jqz32KMktFBdNHjMpT3UxSXNfS3v6PHogJ2YvLu-xiMBMfBwZNudR6Y53ptqwqQh0dNorq0pYQCuPzrLqubusqyRXCslXywITsCuCxyy~dnaBHDFg__')">
+                Add To Cart
+                </button>
+              </div>
+
+
+              <div class="product-card" onclick="viewProduct('gucci-bag', 'CANON EOS DSLR Camera', 100, 'https://s3-alpha-sig.figma.com/img/e608/92a4/f0a3d5d144dce622c7338ec5be12908f?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=TlVb-fvwB~q2mM9nYZMZB73au600Z5fsTqPFxTlbI2ln4mMKKz~Ye67N7-5KbMGzY2GgGUsEXa2Fc96c~chG7LkEuxgk0SJY9FmigpxfLAPKszP71MD0yF-RJ8pBR1ICgVtoMqDVOTU0hnbGGXGARiSA9zloJK53f6odg1xsso~6d9gScipmkX7Ve5QyvfGPHipgWEAa~BHRgfqZGMp~XJ5yc-493P2~a~Nl9Jqz32KMktFBdNHjMpT3UxSXNfS3v6PHogJ2YvLu-xiMBMfBwZNudR6Y53ptqwqQh0dNorq0pYQCuPzrLqubusqyRXCslXywITsCuCxyy~dnaBHDFg')">
+                <span class="badge-new">NEW</span>
+                <img src="https://s3-alpha-sig.figma.com/img/e608/92a4/f0a3d5d144dce622c7338ec5be12908f?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=TlVb-fvwB~q2mM9nYZMZB73au600Z5fsTqPFxTlbI2ln4mMKKz~Ye67N7-5KbMGzY2GgGUsEXa2Fc96c~chG7LkEuxgk0SJY9FmigpxfLAPKszP71MD0yF-RJ8pBR1ICgVtoMqDVOTU0hnbGGXGARiSA9zloJK53f6odg1xsso~6d9gScipmkX7Ve5QyvfGPHipgWEAa~BHRgfqZGMp~XJ5yc-493P2~a~Nl9Jqz32KMktFBdNHjMpT3UxSXNfS3v6PHogJ2YvLu-xiMBMfBwZNudR6Y53ptqwqQh0dNorq0pYQCuPzrLqubusqyRXCslXywITsCuCxyy~dnaBHDFg__" alt="Product">
+                <div class="product-title">Máy ảnh CANON EOS 250D</div>
+                <div class="product-price">$100</div>
+                <div class="product-rating">★★★★☆ (35)</div>
+                <button class="add-to-cart" onclick="event.stopPropagation(); addToCart()">Add To Cart</button>
+
+                <!-- <button class="add-to-cart" 
+                onclick="event.stopPropagation(); addToCart('p1', 'CANON EOS DSLR Camera', 100, 'https://s3-alpha-sig.figma.com/img/e608/92a4/f0a3d5d144dce622c7338ec5be12908f?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=TlVb-fvwB~q2mM9nYZMZB73au600Z5fsTqPFxTlbI2ln4mMKKz~Ye67N7-5KbMGzY2GgGUsEXa2Fc96c~chG7LkEuxgk0SJY9FmigpxfLAPKszP71MD0yF-RJ8pBR1ICgVtoMqDVOTU0hnbGGXGARiSA9zloJK53f6odg1xsso~6d9gScipmkX7Ve5QyvfGPHipgWEAa~BHRgfqZGMp~XJ5yc-493P2~a~Nl9Jqz32KMktFBdNHjMpT3UxSXNfS3v6PHogJ2YvLu-xiMBMfBwZNudR6Y53ptqwqQh0dNorq0pYQCuPzrLqubusqyRXCslXywITsCuCxyy~dnaBHDFg')">
+          Add To Cart
+        </button> -->
+
+
+              </div>
+              <div class="product-card"onclick="viewProduct('gucci-bag', 'Kids Electric Car', 960, 'https://s3-alpha-sig.figma.com/img/203b/e522/b7b02d10672f6f6147762cf52bfcfc54?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=UdkLzQurUmJApWVIvyTrpu~EHhOjvVPD-5GIJaapRWVELGMDubortx~cmyl8IPJEk0faxQro-UPgnFkYtZNRa3izWujtzBLAHMwSTYBtoF5HfZPhWRS8wIP0S4~NsolBkWworfq~W1rTetZpOpVxh8mMKi-DSjmvwoNgLmt-3457IWDKKmZiZnBXXv79Ji-xKecec1ozWUvreSMyhv1wx7pBdsMYQrSFq5SsRcHaaAT46~s3uK891~~g5CdiZIGOxFWkV-WrvGVy0cpGwEsUwY5xDQSF~mQTjBCS-wF7qXr9c1ksPGMYlQwStzsBpxZPxmIUo930szFiGhZB~dfMLA')">
+                <span class="badge-new">NEW</span>
+                <img src="https://s3-alpha-sig.figma.com/img/203b/e522/b7b02d10672f6f6147762cf52bfcfc54?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=UdkLzQurUmJApWVIvyTrpu~EHhOjvVPD-5GIJaapRWVELGMDubortx~cmyl8IPJEk0faxQro-UPgnFkYtZNRa3izWujtzBLAHMwSTYBtoF5HfZPhWRS8wIP0S4~NsolBkWworfq~W1rTetZpOpVxh8mMKi-DSjmvwoNgLmt-3457IWDKKmZiZnBXXv79Ji-xKecec1ozWUvreSMyhv1wx7pBdsMYQrSFq5SsRcHaaAT46~s3uK891~~g5CdiZIGOxFWkV-WrvGVy0cpGwEsUwY5xDQSF~mQTjBCS-wF7qXr9c1ksPGMYlQwStzsBpxZPxmIUo930szFiGhZB~dfMLA__" alt="Product">
+                <div class="product-title">Laptop Kids Electric </div>
+                <div class="product-price">$960</div>
+                <div class="product-rating">★★★★★ (65)</div>
+                <button class="add-to-cart" onclick="event.stopPropagation(); addToCart()">Add To Cart</button>
+              </div>
+              <!-- tthu -->
+              <!-- <div class="product-card" onclick="viewProduct('gucci-bag', 'Gucci duffle bag', 960, 'asset/4f3ca1d12722dbdf98f25179d3c0b785988c513d.png')">
+                <span class="badge-new">NEW</span>
+                <img src="asset/4f3ca1d12722dbdf98f25179d3c0b785988c513d.png" alt="Product">
+                <div class="product-title">Gucci duffle bag</div>
+                <div class="product-price">$960</div>
+                <div class="product-rating">★★★★★ (40)</div>
+                <button class="add-to-cart" onclick="event.stopPropagation(); addToCart()">Add To Cart</button>
+              </div>
+              
+              <div class="product-card" onclick="viewProduct('gucci-bag', 'RGB liquid CPU Cooler', 1960, 'asset/6739d39dc218c97b645d616c8188a4f2e6aaf84b.png')">
+                <span class="badge-new">NEW</span>
+                <img src="asset/6739d39dc218c97b645d616c8188a4f2e6aaf84b.png" alt="Product">
+                <div class="product-title">RGB Loa </div>
+                <div class="product-price">$1960</div>
+                <div class="product-rating">★★★★★ (55)</div>
+                <button class="add-to-cart" onclick="event.stopPropagation(); addToCart()">Add To Cart</button>
+              </div>
+              <div class="product-card" onclick="viewProduct('gucci-bag', 'GP11 Shooter USB Gamepad', 550, 'asset/288e013365fe639fccc1fe4168fca740ef1f85e7.png')">
+                <span class="badge-new">NEW</span>
+                <img src="asset/288e013365fe639fccc1fe4168fca740ef1f85e7.png" alt="Product">
+                <div class="product-title">Tay Cầm Gamepad</div>
+                <div class="product-price">$550</div>
+                <div class="product-rating">★★★★★ (15)</div>
+                <button class="add-to-cart" onclick="event.stopPropagation(); addToCart()">Add To Cart</button>
+              </div>
+              <div class="product-card" onclick="viewProduct('gucci-bag', 'Giày Bóng Đá Xanh', 550, 'asset/d0b7bb25884f6fdfc1357634d7d7b09e05755c2f.png')">
+                <span class="badge-new">NEW</span>
+                <img src="asset/d0b7bb25884f6fdfc1357634d7d7b09e05755c2f.png">
+                <div class="product-title">Giày Bóng Đá Xanh</div>
+                <div class="product-price">$960</div>
+                <div class="product-rating">★★★★★ (65)</div>
+                <button class="add-to-cart" onclick="event.stopPropagation(); addToCart()">Add To Cart</button>
+              </div>
+              <div class="product-card" onclick="viewProduct('gucci-bag', 'Mercedes Car', 550, 'asset/New-Mercedes-Benz-Gtr-Licensed-Ride-on-Car-Kids-Electric-Toy-Car 1.svg')">
+                <span class="badge-new">NEW</span>
+                <img src="asset/New-Mercedes-Benz-Gtr-Licensed-Ride-on-Car-Kids-Electric-Toy-Car 1.svg" alt="Product">
+                <div class="product-title">Mercedes Car</div>
+                <div class="product-price">$960</div>
+                <div class="product-rating">★★★★★ (65)</div>
+                <button class="add-to-cart" onclick="event.stopPropagation(); addToCart()">Add To Cart</button>
+              </div>
+              <div class="product-card">
+                <span class="badge-new">NEW</span>
+                <img src="asset/e59d9f348cc24eeff489863523b63971c3ff8e4a.png" alt="Product">
+                <div class="product-title">Bàn Phím</div>
+                <div class="product-price">$960</div>
+                <div class="product-rating">★★★★★ (65)</div>
+                <button class="add-to-cart" onclick="event.stopPropagation(); addToCart()">Add To Cart</button>
+              </div>
+              <div class="product-card">
+                  <span class="badge-new">NEW</span>
+                  <img src="asset/g27cq4-500x500 1.svg" alt="Product">
+                  <div class="product-title">Màn Hình</div>
+                  <div class="product-price">$960</div>
+                  <div class="product-rating">★★★★★ (65)</div>
+                  <button class="add-to-cart" onclick="event.stopPropagation(); addToCart()">Add To Cart</button>
+                </div>
+                <div class="product-card">
+                  <span class="badge-new">NEW</span>
+                  <img src="https://s3-alpha-sig.figma.com/img/203b/e522/b7b02d10672f6f6147762cf52bfcfc54?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=UdkLzQurUmJApWVIvyTrpu~EHhOjvVPD-5GIJaapRWVELGMDubortx~cmyl8IPJEk0faxQro-UPgnFkYtZNRa3izWujtzBLAHMwSTYBtoF5HfZPhWRS8wIP0S4~NsolBkWworfq~W1rTetZpOpVxh8mMKi-DSjmvwoNgLmt-3457IWDKKmZiZnBXXv79Ji-xKecec1ozWUvreSMyhv1wx7pBdsMYQrSFq5SsRcHaaAT46~s3uK891~~g5CdiZIGOxFWkV-WrvGVy0cpGwEsUwY5xDQSF~mQTjBCS-wF7qXr9c1ksPGMYlQwStzsBpxZPxmIUo930szFiGhZB~dfMLA__" alt="Product">
+                  <div class="product-title">Kids Electric Car</div>
+                  <div class="product-price">$960</div>
+                  <div class="product-rating">★★★★★ (65)</div>
+                  <button class="add-to-cart" onclick="event.stopPropagation(); addToCart()">Add To Cart</button>
+                </div> -->
+              <!-- Thêm các sản phẩm khác tương tự ở đây -->
+            </div>
+        
+            <div class="view-all-btn">
+              <!-- <button>View All Products</button> -->
+          
+
+
+
+
+        <div class="footter">
+          
+            <div class="footer-container">
+              <!-- Subscribe -->
+              <div class="footer-col">
+                <h3>Exclusive</h3>
+                <p>Subscribe</p>
+                <p>Get 10% off your first order</p>
+                <form class="subscribe-form">
+                  <input type="email" placeholder="Enter your email" />
+                  <button type="submit">➤</button>
+                </form>
+              </div>
+          
+              <!-- Support -->
+              <div class="footer-col">
+                <h4>Support</h4>
+                <p>111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</p>
+                <p>exclusive@gmail.com</p>
+                <p>+88015-88888-9999</p>
+              </div>
+          
+              <!-- Account -->
+              <div class="footer-col">
+                <h4>Account</h4>
+                <ul>
+                  <li><a href="#">My Account</a></li>
+                  <li><a href="#">Login / Register</a></li>
+                  <li><a href="#">Cart</a></li>
+                  <li><a href="#">Wishlist</a></li>
+                  <li><a href="#">Shop</a></li>
+                </ul>
+              </div>
+          
+              <!-- Quick Link -->
+              <div class="footer-col">
+                <h4>Quick Link</h4>
+                <ul>
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Terms Of Use</a></li>
+                  <li><a href="#">FAQ</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+              </div>
+          
+           
+              <div class="footer-col">
+                <h4>Download App</h4>
+                <p>Save $3 with App New User Only</p>
+                
+                  <div class="social-icons">
+                    <a href="#">f</a>
+                    <a href="#">🐦</a>
+                    <a href="#">📸</a>
+                    <a href="#">in</a>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+        
+            <p class="footer-bottom">© Copyright Rimel 2022. All right reserved</p>
+        </div>
+          
+
+
+
+        </div>
+
+
+    </div>
+    <script>
+      function viewProduct(id, name, price, image) {
+        const product = { id, name, price, image };
+        localStorage.setItem("selectedProduct", JSON.stringify(product));
+        window.location.href = "product-detail.html";
+      }
+
+    </script>
+
+<script src="cart.js"></script>
+<script src="seach.js"></script>
+<script src="filter.js"></script>
+<script>
+//   // Lấy nút đăng xuất sau khi DOM được tải
+//   document.addEventListener('DOMContentLoaded', function() {
+//     const logoutButton = document.getElementById('logoutBtn');
+//     if (logoutButton) {
+//       logoutButton.addEventListener('click', logout);
+//     }
+//   });
+
+//   // Hàm logout
+//   function logout() {
+//     localStorage.removeItem("currentUser");
+//     localStorage.removeItem("loggedInUserId");
+//     saveCart([]); // Xóa giỏ hàng khi đăng xuất (tùy chọn)
+//     window.location.href = "index.html"; // Chuyển về trang chủ hoặc trang đăng nhập
+//   }
+function viewProduct(id, name, price, image) {
+            const product = { id, name, price, image };
+            localStorage.setItem("selectedProduct", JSON.stringify(product));
+            window.location.href = "product-detail.html";
+        }
+
+        // Hàm để cập nhật giao diện dropdown giỏ hàng
+        function updateDropdownCartUI() {
+            const cart = getCart(); // Lấy giỏ hàng từ cart.js
+            const cartItemsElement = document.getElementById('cart-items');
+            const totalElement = document.getElementById('total');
+            const totalQuantityElement = document.querySelector('.totalQuantity');
+
+            let total = 0;
+            let totalQuantity = 0;
+            cartItemsElement.innerHTML = '';
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                totalQuantity += item.quantity;
+
+                const li = document.createElement('li');
+                li.className = 'cart-item';
+                li.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" width="50">
+                    <div class="cart-item-info">
+                        <span>${item.name}</span>
+                        <span>$${item.price} x ${item.quantity} = $${itemTotal.toFixed(2)}</span>
+                    </div>
+                    <div class="cart-item-actions">
+                        <input type="number" value="${item.quantity}" min="1"
+                               onchange="updateQuantity('${item.id}', this.value)">
+                        <button onclick="removeFromCart('${item.id}')">×</button>
+                    </div>
+                `;
+                cartItemsElement.appendChild(li);
+            });
+
+            totalElement.textContent = total.toFixed(2);
+            totalQuantityElement.textContent = totalQuantity;
+
+            if (cart.length === 0) {
+                cartItemsElement.innerHTML = '<li class="empty-cart">Your cart is empty</li>';
+            }
+        }
+
+        function toggleCartDropdown() {
+            const dropdown = document.getElementById('cartDropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.cart-icon') && !event.target.closest('.cart-dropdown')) {
+                const dropdowns = document.getElementsByClassName('cart-dropdown');
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDropdownCartUI(); // Gọi lần đầu khi trang tải
+            document.querySelector('.cart-icon').addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleCartDropdown();
+            });
+
+            const logoutButton = document.getElementById('logoutBtn');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', logout);
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem("currentUser");
+            localStorage.removeItem("loggedInUserId");
+            saveCart([]);
+            window.location.href = "index.html";
+        }
+
+        // Định nghĩa hàm updateAllCartUIs ở đây để nó có thể gọi cả hai hàm cập nhật UI
+        updateAllCartUIs = function() {
+            if (typeof displayCartItems === 'function') {
+                displayCartItems(); // Cập nhật trang giỏ hàng
+            }
+            updateDropdownCartUI(); // Cập nhật dropdown giỏ hàng
+            // updateTotalQuantityHeader(); // Hàm này đã được gọi trong displayCartItems
+        };
+
+  
+
+</script>
+
+
+</body>
+
+</html>

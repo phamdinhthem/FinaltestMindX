@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch Sử Đơn Hàng</title>
+    <link rel="stylesheet" href="final.css">
+    <style>
+        .order-history-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .order-history-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .order-item {
+            border: 1px solid #eee;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .order-item h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .order-details p {
+            margin-bottom: 5px;
+        }
+        .order-items-list {
+            list-style: none;
+            padding: 0;
+        }
+        .order-items-list li {
+            margin-bottom: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <p>THEM</p>
+            </div>
+            <div class="menu">
+                <a href="home.html"><span>Home</span></a>
+                <a href="contact.html"><span>Contact</span></a>
+                <a href="#"><span>About</span></a>
+                <button id="logoutBtn">Logout</button>
+            </div>
+            <div class="lastheader">
+                <div class="search-input">
+                    <input type="text" class="search-input" placeholder="What are you looking for?">
+                    <img src="./asset/Component 2.svg" alt="">
+                </div>
+                <div class="cart">
+                    <a href="cart.html" class="cart-icon">
+                        <img src="./asset/Cart1 with buy.svg" alt="">
+                        <span class="totalQuantity">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main">
+            <section class="order-history-page">
+                <div class="order-history-container">
+                    <h1 class="order-history-title">Lịch Sử Đơn Hàng</h1>
+                    <div id="order-history-list">
+                        </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="footter">
+            </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTotalQuantityHeader();
+            displayOrderHistory();
+            const logoutButton = document.getElementById('logoutBtn');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', logout);
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem("currentUser");
+            localStorage.removeItem("loggedInUserId");
+            saveCart([]);
+            window.location.href = "index.html";
+        }
+
+        function updateTotalQuantityHeader() {
+            const cart = getCart();
+            const totalQuantityElement = document.querySelector('.totalQuantity');
+            let totalQuantity = 0;
+            cart.forEach(item => {
+                totalQuantity += item.quantity;
+            });
+            if (totalQuantityElement) {
+                totalQuantityElement.textContent = totalQuantity;
+            }
+        }
+
+        function getOrderHistory() {
+            const orders = localStorage.getItem('orderHistory');
+            return orders ? JSON.parse(orders).reverse() : []; // Đảo ngược để hiển thị đơn hàng mới nhất trước
+        }
+
+        function displayOrderHistory() {
+            const orderHistory = getOrderHistory();
+            const orderHistoryContainer = document.getElementById('order-history-list');
+            let ordersHTML = '';
+
+            if (orderHistory.length === 0) {
+                ordersHTML = '<p>Chưa có đơn hàng nào.</p>';
+            } else {
+                orderHistory.forEach(order => {
+                    const orderDate = new Date(order.orderDate).toLocaleDateString() + ' ' + new Date(order.orderDate).toLocaleTimeString();
+                    let itemsList = '<ul class="order-items-list">';
+                    order.items.forEach(item => {
+                        itemsList += `<li>${item.name} (${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}</li>`;
+                    });
+                    itemsList += '</ul>';
+
+                    ordersHTML += `
+                        <div class="order-item">
+                            <h4>Đơn hàng #${order.orderId}</h4>
+                            <div class="order-details">
+                                <p>Ngày đặt hàng: ${orderDate}</p>
+                                <p>Tổng tiền: $${order.totalAmount.toFixed(2)}</p>
+                                <p>Địa chỉ giao hàng: ${order.shippingInfo.address}</p>
+                                <p>Các sản phẩm:</p>
+                                ${itemsList}
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            orderHistoryContainer.innerHTML = ordersHTML;
+        }
+    </script>
+</body>
+</html>

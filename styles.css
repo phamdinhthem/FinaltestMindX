@@ -1,0 +1,244 @@
+.container {
+
+  width: 100%;
+  /* chiếm toàn bộ chiều rộng có thể */
+  margin: 0 auto;
+  /* căn giữa */
+  padding: 0 30px;
+  /* có lề để nội dung không dính sát cạnh */
+  box-sizing: border-box;
+}
+.container .header {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* hover active */
+.menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 8px 12px;
+  transition: color 0.3s, border-bottom 0.3s;
+  position: relative;
+}
+
+.menu a:hover {
+  color: #e60023;
+}
+
+.menu a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: #e60023;
+  transition: width 0.3s;
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+/* Nếu muốn đánh dấu menu đang active */
+.menu a.active {
+  color: #e60023;
+  font-weight: bold;
+}
+
+
+
+.container .header .logo {
+  font-family: Exo;
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.container .header .menu {
+  display: flex;
+  gap: 150px;
+
+}
+
+.container .header .menu a {
+  text-decoration: none;
+  /* color: inherit; */
+  font-size: 16px;
+  font-size: Poppins;
+}
+
+.container .header .lastheader .search-input {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background-color: #F5F5F5;
+  border-radius: 6px;
+  border: 0;
+}
+
+.container .header .lastheader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* hover active */
+.menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 8px 12px;
+  transition: color 0.3s, border-bottom 0.3s;
+  position: relative;
+}
+
+.menu a:hover {
+  color: #e60023;
+}
+
+.menu a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: #e60023;
+  transition: width 0.3s;
+}
+.menu a:hover::after {
+  width: 100%;
+}
+/* Nếu muốn đánh dấu menu đang active */
+.menu a.active {
+  color: #e60023;
+  font-weight: bold;
+}
+
+form {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Heading */
+.main-container {
+  display: flex;
+  justify-content: center;
+}
+form h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+form p {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Inputs */
+form input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+/* Button */
+form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #d93939;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #c53030;
+}
+
+/* Link */
+form a {
+  color: #333;
+  text-decoration: none;
+}
+
+form a:hover {
+  text-decoration: underline;
+}
+
+form p:last-child {
+  margin-top: 15px;
+} 
+
+
+/* chi tiet san pham */
+.product-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 50px;
+  padding: 20px;
+}
+
+.product-detail img {
+  max-width: 400px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.product-info {
+  max-width: 400px;
+}
+
+.product-info h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.product-info p {
+  font-size: 22px;
+  color: red;
+  margin-bottom: 25px;
+}
+
+.product-info button {
+  padding: 12px 25px;
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.product-info button:hover {
+  background-color: #333;
+}

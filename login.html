@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <P>THEM</P>
+            </div>
+            <div class="menu">
+                <a href="index.html">
+                    <span>Home</span>
+                </a>
+                <a href="contact.html">
+                    <span>Contact</span>
+                </a>
+                <a href="">
+                    <span>About</span>
+                </a>
+                <a href="signup.html">
+                    <span>Sign Up</span>
+                </a>
+            </div>
+            <div class="lastheader">
+                <div class="search-input">
+                    <input type="text" class="search-input" placeholder="What are you looking for?">
+                    <img src="./asset/Component 2.svg" alt="">
+                </div>
+                <!-- <div class="love"><img src="asset/Wishlist.svg" alt=""></div>
+                <div class="cart">
+                    <a href="/cart">
+                        <img src="./asset/Cart1 with buy.svg" alt="">
+                    </a>
+                </div>  -->
+
+            </div>
+        </div>
+
+
+    <div class="main-container">
+    <form id="formLogin">
+        <h2>Log in</h2>
+        <input type="email" id="email" placeholder="Email" />
+        <input type="password" id="password" placeholder="Password" />
+        <button type="submit">Login</button>
+        <p>Don't have account? <a href="signup.html">Register</a></p>
+    </form>
+</div>
+    <script src="js/login.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+    </div>
+<script src="login.js"></script>
+</body>
+
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Đăng nhập</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 400px; margin: 0 auto; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        input { width: 100%; padding: 8px; box-sizing: border-box; }
+        button { background: #4CAF50; color: white; border: none; padding: 10px; width: 100%; cursor: pointer; }
+        .error { color: red; }
+    </style>
+    <script src="auth.js"></script>
+</head>
+<body>
+    <h2>Đăng nhập</h2>
+    <form id="loginForm">
+        <div class="form-group">
+            <label>Tên đăng nhập:</label>
+            <input type="text" id="username" required>
+        </div>
+        <div class="form-group">
+            <label>Mật khẩu:</label>
+            <input type="password" id="password" required>
+        </div>
+        <div id="error" class="error"></div>
+        <button type="submit">Đăng nhập</button>
+    </form>
+    <p>Chưa có tài khoản? <a href="signup.html">Đăng ký</a></p>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                login(username, password);
+                alert("Đăng nhập thành công!");
+                window.location.href = "index.html";
+            } catch (error) {
+                document.getElementById('error').textContent = error.message;
+            }
+        });
+    </script>
+</body>
+</html> -->

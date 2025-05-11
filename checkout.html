@@ -1,0 +1,834 @@
+ <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán</title>
+    <link rel="stylesheet" href="final.css">
+    <link rel="stylesheet" href="checkout.css"> </head>
+<body>
+    <div class="container">
+        <h1>Thanh Toán</h1>
+        <div class="checkout-grid">
+            <div class="billing-info">
+                <h2>Thông Tin Giao Hàng</h2>
+                <form id="shipping-form">
+                    <div class="form-group">
+                        <label for="name">Tên người nhận:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Địa chỉ giao hàng:</label>
+                        <textarea id="address" name="address" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Số điện thoại:</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email (tùy chọn):</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                </form>
+            </div>
+            <div class="order-summary">
+                <h2>Đơn Hàng Của Bạn</h2>
+                <ul id="order-items">
+                    </ul>
+                <div class="total">
+                    <strong>Tổng cộng:</strong> <span id="order-total">$0.00</span>
+                </div>
+                <div class="payment-methods">
+                    <h2>Phương Thức Thanh Toán</h2>
+                    <div class="form-group">
+                        <input type="radio" id="cod" name="payment" value="cod" checked>
+                        <label for="cod">Thanh toán khi nhận hàng (COD)</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="radio" id="transfer" name="payment" value="transfer">
+                        <label for="transfer">Chuyển khoản ngân hàng</label>
+                        <div id="transfer-info" style="display: none;">
+                            <p>Thông tin tài khoản ngân hàng:</p>
+                            <p>Ngân hàng: ...</p>
+                            <p>Số tài khoản: ...</p>
+                            <p>Chủ tài khoản: ...</p>
+                        </div>
+                    </div>
+                    </div>
+                <button class="place-order-btn" onclick="placeOrder()">Đặt Hàng</button>
+            </div>
+        </div>
+    </div>
+    <script src="cart.js"></script>
+    <script src="checkout.js"></script>
+</body>
+</html>  -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán</title>
+    <link rel="stylesheet" href="final.css">
+    <link rel="stylesheet" href="checkout.css">
+    <style>
+        .checkout-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .checkout-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .order-summary {
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .order-summary h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .total-amount {
+            font-weight: bold;
+            margin-top: 10px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+            text-align: right;
+        }
+        .payment-info h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .payment-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .payment-form input[type="text"],
+        .payment-form input[type="email"],
+        .payment-form input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        .payment-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .payment-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <p>THEM</p>
+            </div>
+            <div class="menu">
+                <a href="home.html"><span>Home</span></a>
+                <a href="contact.html"><span>Contact</span></a>
+                <a href="#"><span>About</span></a>
+                <button id="logoutBtn">Logout</button>
+            </div>
+            <div class="lastheader">
+                <div class="search-input">
+                    <input type="text" class="search-input" placeholder="What are you looking for?">
+                    <img src="./asset/Component 2.svg" alt="">
+                </div>
+                <div class="cart">
+                    <a href="cart.html" class="cart-icon">
+                        <img src="./asset/Cart1 with buy.svg" alt="">
+                        <span class="totalQuantity">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main">
+            <section class="checkout-page">
+                <div class="checkout-container">
+                    <h1 class="checkout-title">Thanh Toán</h1>
+                    <div class="order-summary">
+                        <h3>Đơn Hàng Của Bạn</h3>
+                        <div id="checkout-items">
+                            </div>
+                        <p class="total-amount">Tổng tiền: $<span id="checkout-total">0.00</span></p>
+                    </div>
+
+                    <div class="payment-info">
+                        <h3>Thông Tin Thanh Toán</h3>
+                        <form id="payment-form" class="payment-form">
+                            <label for="name">Họ và tên:</label>
+                            <input type="text" id="name" required>
+
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" required>
+
+                            <label for="address">Địa chỉ giao hàng:</label>
+                            <input type="text" id="address" required>
+
+                            <label for="phone">Số điện thoại:</label>
+                            <input type="number" id="phone" required>
+
+                            <button type="button" onclick="processPayment()">Hoàn Tất Thanh Toán</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="footter">
+            </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script src="checkout.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTotalQuantityHeader();
+            displayOrderSummary();
+            const logoutButton = document.getElementById('logoutBtn');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', logout);
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem("currentUser");
+            localStorage.removeItem("loggedInUserId");
+            saveCart([]);
+            window.location.href = "index.html";
+        }
+
+        function updateTotalQuantityHeader() {
+            const cart = getCart();
+            const totalQuantityElement = document.querySelector('.totalQuantity');
+            let totalQuantity = 0;
+            cart.forEach(item => {
+                totalQuantity += item.quantity;
+            });
+            if (totalQuantityElement) {
+                totalQuantityElement.textContent = totalQuantity;
+            }
+        }
+
+        function displayOrderSummary() {
+            const cartItems = getCart();
+            const checkoutItemsContainer = document.getElementById('checkout-items');
+            const checkoutTotalElement = document.getElementById('checkout-total');
+            let total = 0;
+            let itemsHTML = '';
+
+            cartItems.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                itemsHTML += `
+                    <div class="order-item">
+                        <span>${item.name} (${item.quantity})</span>
+                        <span>$${itemTotal.toFixed(2)}</span>
+                    </div>
+                `;
+            });
+
+            checkoutItemsContainer.innerHTML = itemsHTML;
+            checkoutTotalElement.textContent = total.toFixed(2);
+        }
+
+        function processPayment() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const cart = getCart();
+            const totalAmount = document.getElementById('checkout-total').textContent;
+            const userId = getLoggedInUserId();
+            const orderId = Date.now(); // Tạo ID đơn hàng đơn giản
+
+            if (cart.length > 0 && name && email && address && phone) {
+                const order = {
+                    orderId: orderId,
+                    userId: userId || 'guest',
+                    items: cart,
+                    totalAmount: parseFloat(totalAmount),
+                    shippingInfo: { name, email, address, phone },
+                    orderDate: new Date().toISOString()
+                };
+
+                // Lưu lịch sử đơn hàng
+                saveOrder(order);
+
+                // Xóa giỏ hàng sau khi thanh toán thành công
+                saveCart([]);
+
+                // Chuyển đến trang lịch sử đơn hàng
+                window.location.href = 'order_history.html';
+            } else {
+                alert('Vui lòng điền đầy đủ thông tin và đảm bảo giỏ hàng không trống.');
+            }
+        }
+
+        function saveOrder(order) {
+            let orders = localStorage.getItem('orderHistory');
+            orders = orders ? JSON.parse(orders) : [];
+            orders.push(order);
+            localStorage.setItem('orderHistory', JSON.stringify(orders));
+        }
+    </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán</title>
+    <link rel="stylesheet" href="final.css">
+    <link rel="stylesheet" href="checkout.css">
+    <style>
+        .checkout-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .checkout-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .order-summary {
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .order-summary h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .total-amount {
+            font-weight: bold;
+            margin-top: 10px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+            text-align: right;
+        }
+        .payment-info h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .payment-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .payment-form input[type="text"],
+        .payment-form input[type="email"],
+        .payment-form input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        .payment-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .payment-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <p>THEM</p>
+            </div>
+            <div class="menu">
+                <a href="home.html"><span>Home</span></a>
+                <a href="contact.html"><span>Contact</span></a>
+                <a href="#"><span>About</span></a>
+                <button id="logoutBtn">Logout</button>
+            </div>
+            <div class="lastheader">
+                <div class="search-input">
+                    <input type="text" class="search-input" placeholder="What are you looking for?">
+                    <img src="./asset/Component 2.svg" alt="">
+                </div>
+                <div class="cart">
+                    <a href="cart.html" class="cart-icon">
+                        <img src="./asset/Cart1 with buy.svg" alt="">
+                        <span class="totalQuantity">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main">
+            <section class="checkout-page">
+                <div class="checkout-container">
+                    <h1 class="checkout-title">Thanh Toán</h1>
+                    <div class="order-summary">
+                        <h3>Đơn Hàng Của Bạn</h3>
+                        <div id="checkout-items">
+                            </div>
+                        <p class="total-amount">Tổng tiền: $<span id="checkout-total">0.00</span></p>
+                    </div>
+
+                    <div class="payment-info">
+                        <h3>Thông Tin Thanh Toán</h3>
+                        <form id="payment-form" class="payment-form">
+                            <label for="name">Họ và tên:</label>
+                            <input type="text" id="name" required>
+
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" required>
+
+                            <label for="address">Địa chỉ giao hàng:</label>
+                            <input type="text" id="address" required>
+
+                            <label for="phone">Số điện thoại:</label>
+                            <input type="number" id="phone" required>
+
+                            <button type="button" onclick="processPayment()">Hoàn Tất Thanh Toán</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="footter">
+            </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTotalQuantityHeader();
+            displayOrderSummary();
+            const logoutButton = document.getElementById('logoutBtn');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', logout);
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem("currentUser");
+            localStorage.removeItem("loggedInUserId");
+            saveCart([]);
+            window.location.href = "index.html";
+        }
+
+        function getLoggedInUserId() {
+            return localStorage.getItem('loggedInUserId') || null;
+        }
+
+        function getCart() {
+            const cartKey = getCartKey();
+            const cart = localStorage.getItem(cartKey);
+            return cart ? JSON.parse(cart) : [];
+        }
+
+        function getCartKey() {
+            const userId = getLoggedInUserId();
+            return userId ? `cart_${userId}` : 'cart_guest';
+        }
+
+        function saveCart(cart) {
+            const cartKey = getCartKey();
+            localStorage.setItem(cartKey, JSON.stringify(cart));
+            updateTotalQuantityHeader();
+        }
+
+        function updateTotalQuantityHeader() {
+            const cart = getCart();
+            const totalQuantityElement = document.querySelector('.totalQuantity');
+            let totalQuantity = 0;
+            cart.forEach(item => {
+                totalQuantity += item.quantity;
+            });
+            if (totalQuantityElement) {
+                totalQuantityElement.textContent = totalQuantity;
+            }
+        }
+
+        function displayOrderSummary() {
+            const cartItems = getCart();
+            const checkoutItemsContainer = document.getElementById('checkout-items');
+            const checkoutTotalElement = document.getElementById('checkout-total');
+            let total = 0;
+            let itemsHTML = '';
+
+            cartItems.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                itemsHTML += `
+                    <div class="order-item">
+                        <span>${item.name} (${item.quantity})</span>
+                        <span>$${itemTotal.toFixed(2)}</span>
+                    </div>
+                `;
+            });
+
+            checkoutItemsContainer.innerHTML = itemsHTML;
+            checkoutTotalElement.textContent = total.toFixed(2);
+        }
+
+        function processPayment() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const cart = getCart();
+            const totalAmount = document.getElementById('checkout-total').textContent;
+            const userId = getLoggedInUserId();
+            const orderId = Date.now(); // Tạo ID đơn hàng đơn giản
+
+            if (cart.length > 0 && name && email && address && phone) {
+                const order = {
+                    orderId: orderId,
+                    userId: userId || 'guest',
+                    items: cart,
+                    totalAmount: parseFloat(totalAmount),
+                    shippingInfo: { name, email, address, phone },
+                    orderDate: new Date().toISOString()
+                };
+
+                // Lưu lịch sử đơn hàng
+                saveOrder(order);
+
+                // Xóa giỏ hàng sau khi thanh toán thành công
+                saveCart([]);
+
+                // Chuyển đến trang lịch sử đơn hàng
+                window.location.href = 'order_history.html';
+            } else {
+                alert('Vui lòng điền đầy đủ thông tin và đảm bảo giỏ hàng không trống.');
+            }
+        }
+
+        function saveOrder(order) {
+            const userId = getLoggedInUserId();
+            if (userId) {
+                let userOrders = localStorage.getItem(`orderHistory_${userId}`);
+                userOrders = userOrders ? JSON.parse(userOrders) : [];
+                userOrders.push(order);
+                localStorage.setItem(`orderHistory_${userId}`, JSON.stringify(userOrders));
+            } else {
+                console.warn("Không có người dùng đăng nhập, không thể lưu lịch sử đơn hàng riêng.");
+                // Bạn có thể xử lý trường hợp người dùng chưa đăng nhập ở đây,
+                // ví dụ: lưu tạm vào một khóa khác hoặc yêu cầu đăng nhập.
+                let guestOrders = localStorage.getItem('orderHistory_guest');
+                guestOrders = guestOrders ? JSON.parse(guestOrders) : [];
+                guestOrders.push(order);
+                localStorage.setItem('orderHistory_guest', JSON.stringify(guestOrders));
+            }
+        }
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán</title>
+    <link rel="stylesheet" href="final.css">
+    <link rel="stylesheet" href="checkout.css">
+    <style>
+        .checkout-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .checkout-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .order-summary {
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .order-summary h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .total-amount {
+            font-weight: bold;
+            margin-top: 10px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+            text-align: right;
+        }
+        .payment-info h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .payment-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .payment-form input[type="text"],
+        .payment-form input[type="email"],
+        .payment-form input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        .payment-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .payment-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <p>THEM</p>
+            </div>
+            <div class="menu">
+                <a href="home.html"><span>Home</span></a>
+                <a href="contact.html"><span>Contact</span></a>
+                <a href="#"><span>About</span></a>
+                <button id="logoutBtn">Logout</button>
+            </div>
+            <div class="lastheader">
+                <div class="search-input">
+                    <input type="text" class="search-input" placeholder="What are you looking for?">
+                    <img src="./asset/Component 2.svg" alt="">
+                </div>
+                <div class="cart">
+                    <a href="cart.html" class="cart-icon">
+                        <img src="./asset/Cart1 with buy.svg" alt="">
+                        <span class="totalQuantity">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main">
+            <section class="checkout-page">
+                <div class="checkout-container">
+                    <h1 class="checkout-title">Thanh Toán</h1>
+                    <div class="order-summary">
+                        <h3>Đơn Hàng Của Bạn</h3>
+                        <div id="checkout-items">
+                            </div>
+                        <p class="total-amount">Tổng tiền: $<span id="checkout-total">0.00</span></p>
+                    </div>
+
+                    <div class="payment-info">
+                        <h3>Thông Tin Thanh Toán</h3>
+                        <form id="payment-form" class="payment-form">
+                            <label for="name">Họ và tên:</label>
+                            <input type="text" id="name" required>
+
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" required>
+
+                            <label for="address">Địa chỉ giao hàng:</label>
+                            <input type="text" id="address" required>
+
+                            <label for="phone">Số điện thoại:</label>
+                            <input type="number" id="phone" required>
+
+                            <button type="button" onclick="processPayment()">Hoàn Tất Thanh Toán</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="footter">
+            </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTotalQuantityHeader();
+            displayOrderSummary(); // Đảm bảo hàm này được gọi
+            const logoutButton = document.getElementById('logoutBtn');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', logout);
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem("currentUser");
+            localStorage.removeItem("loggedInUserId");
+            saveCart([]);
+            window.location.href = "index.html";
+        }
+
+        function getLoggedInUserId() {
+            return localStorage.getItem('loggedInUserId') || null;
+        }
+
+        function getCartKey() {
+            const userId = getLoggedInUserId();
+            return userId ? `cart_${userId}` : 'cart_guest';
+        }
+
+        function getCart(filter = null) {
+            const cartKey = getCartKey();
+            const cart = localStorage.getItem(cartKey);
+            let cartItems = cart ? JSON.parse(cart) : [];
+
+            // Loại bỏ bộ lọc 'selected' ở đây nếu bạn muốn hiển thị tất cả sản phẩm
+            // trên trang thanh toán. Nếu bạn có logic chọn sản phẩm cụ thể,
+            // hãy đảm bảo 'selectedCheckoutItems' được thiết lập đúng trước khi đến đây.
+            // if (filter === 'selected') {
+            //     const selectedIds = JSON.parse(localStorage.getItem('selectedCheckoutItems') || '[]');
+            //     cartItems = cartItems.filter(item => selectedIds.includes(item.id));
+            // }
+            return cartItems;
+        }
+
+        function saveCart(cart) {
+            const cartKey = getCartKey();
+            localStorage.setItem(cartKey, JSON.stringify(cart));
+            updateTotalQuantityHeader();
+        }
+
+        function updateTotalQuantityHeader() {
+            const cart = getCart();
+            const totalQuantityElement = document.querySelector('.totalQuantity');
+            let totalQuantity = 0;
+            cart.forEach(item => {
+                totalQuantity += item.quantity;
+            });
+            if (totalQuantityElement) {
+                totalQuantityElement.textContent = totalQuantity;
+            }
+        }
+
+        function displayOrderSummary() {
+            const cartItems = getCart(); // Gọi getCart() mà không có bộ lọc
+            const checkoutItemsContainer = document.getElementById('checkout-items');
+            const checkoutTotalElement = document.getElementById('checkout-total');
+            let total = 0;
+            let itemsHTML = '';
+
+            cartItems.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                itemsHTML += `
+                    <div class="order-item">
+                        <span>${item.name} (${item.quantity})</span>
+                        <span>$${itemTotal.toFixed(2)}</span>
+                    </div>
+                `;
+            });
+
+            checkoutItemsContainer.innerHTML = itemsHTML;
+            checkoutTotalElement.textContent = total.toFixed(2);
+        }
+
+        function processPayment() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const cart = getCart();
+            const totalAmount = document.getElementById('checkout-total').textContent;
+            const userId = getLoggedInUserId();
+            const orderId = Date.now(); // Tạo ID đơn hàng đơn giản
+
+            if (cart.length > 0 && name && email && address && phone) {
+                const order = {
+                    orderId: orderId,
+                    userId: userId || 'guest',
+                    items: cart,
+                    totalAmount: parseFloat(totalAmount),
+                    shippingInfo: { name, email, address, phone },
+                    orderDate: new Date().toISOString()
+                };
+
+                // Lưu lịch sử đơn hàng
+                saveOrder(order);
+
+                // Xóa giỏ hàng sau khi thanh toán thành công
+                saveCart([]);
+
+                // Chuyển đến trang lịch sử đơn hàng
+                window.location.href = 'order_history.html';
+            } else {
+                alert('Vui lòng điền đầy đủ thông tin và đảm bảo giỏ hàng không trống.');
+            }
+        }
+
+        function saveOrder(order) {
+            const userId = getLoggedInUserId();
+            if (userId) {
+                let userOrders = localStorage.getItem(`orderHistory_${userId}`);
+                userOrders = userOrders ? JSON.parse(userOrders) : [];
+                userOrders.push(order);
+                localStorage.setItem(`orderHistory_${userId}`, JSON.stringify(userOrders));
+            } else {
+                console.warn("Không có người dùng đăng nhập, không thể lưu lịch sử đơn hàng riêng.");
+                // Bạn có thể xử lý trường hợp người dùng chưa đăng nhập ở đây,
+                // ví dụ: lưu tạm vào một khóa khác hoặc yêu cầu đăng nhập.
+                let guestOrders = localStorage.getItem('orderHistory_guest');
+                guestOrders = guestOrders ? JSON.parse(guestOrders) : [];
+                guestOrders.push(order);
+                localStorage.setItem('orderHistory_guest', JSON.stringify(guestOrders));
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+/* checkout.css */
+.checkout-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.billing-info, .order-summary {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.order-summary ul {
+    list-style: none;
+    padding: 0;
+}
+
+.order-summary li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.order-summary li:last-child {
+    border-bottom: none;
+}
+
+.total {
+    padding-top: 15px;
+    font-size: 1.2em;
+    text-align: right;
+}
+
+.payment-methods {
+    margin-top: 20px;
+}
+
+.place-order-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.place-order-btn:hover {
+    background-color: #0056b3;
+}
+
+#transfer-info {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #f0f0f0;
+    background-color: #fafafa;
+    border-radius: 4px;
+}
